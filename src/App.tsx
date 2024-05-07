@@ -4,12 +4,10 @@ import { Loader } from './components/Loader/Loader';
 import { ItemsList } from './components/ItemsList/ItemsList';
 import { useAppDispatch, useAppSelector } from './store/use-app';
 import { setItems } from './store/slices/itemSlice';
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import { CustomMap } from './components/CustomMap/CustomMap';
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [activeItem, setActiveItem] = useState();
   const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state);
   useEffect(() => {
