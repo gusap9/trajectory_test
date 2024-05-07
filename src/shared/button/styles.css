@@ -1,0 +1,47 @@
+.button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.right {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.center {
+  text-align: center;
+}
+
+.link {
+  background: none;
+  border: none;
+  color: #1640de;
+  text-decoration: underline;
+}
+
+.auto {
+  width: auto;
+}
+
+.max {
+  width: 100%;
+}
+
+.sort_icon {
+  z-index: 0;
+  margin-left: 10px;
+  opacity: 0.3;
+  width: 24px;
+  height: 24px;
+  background-image: url('src/assets/sort_from_bottom.svg');
+  background-size: 24px;
+}
+.sort_icon_active{
+  opacity: 1;
+}
+.sort_icon_toggle {
+  background-image: url('src/assets/sort_from_top.svg');
+}

@@ -1,0 +1,13 @@
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.preloader__img {
+    width: 50px;
+    height: 50px;
+    background-image: url('../../assets/spinner.gif');
+    background-size: 50px;
+  }
+

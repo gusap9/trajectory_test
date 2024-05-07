@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { Loader } from './components/Loader/Loader';
+import { ItemsList } from './components/ItemsList/ItemsList';
+import { useAppDispatch, useAppSelector } from './store/use-app';
+import { setItems } from './store/slices/itemSlice';
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
+import { CustomMap } from './components/CustomMap/CustomMap';
 
 function App() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [activeItem, setActiveItem] = useState();
+  const dispatch = useAppDispatch();
+  const items = useAppSelector((state) => state);
+  useEffect(() => {
+    fetch('https://test.tspb.su/test-task/vehicles')
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(setItems(res));
+        setIsLoading(false);
+      });
+  }, [dispatch]);
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <ItemsList items={items} />
+      <CustomMap items={items} />
     </div>
   );
 }
